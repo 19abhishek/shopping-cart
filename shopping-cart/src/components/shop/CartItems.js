@@ -6,10 +6,10 @@ const CartItems = (props) => {
 
   const productsList = items.map((item) => {
     return (
-      <div className={classes.products}>
-        <div>{props.name}</div>
+      <div className={classes.products} key={item.id}>
+        <div>{item.name}</div>
         <div>
-          `{props.qty} * ${props.price}`
+          {item.qty} * ${item.price}
         </div>
       </div>
     );

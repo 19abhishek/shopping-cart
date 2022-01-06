@@ -12,6 +12,7 @@ const DUMMY_PRODUCTS = [
 ];
 
 const Shop = (props) => {
+  const { clickHandler } = props;
   return (
     <Card>
       <h3>Products</h3>
@@ -23,7 +24,7 @@ const Shop = (props) => {
               img={prod.path}
               name={prod.name}
               price={prod.price}
-              click={props.clickHandler.bind(null, prod)}
+              clickHandler={() => clickHandler(prod)}
             />
           );
         })}

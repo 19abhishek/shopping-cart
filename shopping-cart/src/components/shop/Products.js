@@ -11,7 +11,7 @@ const Products = (props) => {
         <div>{props.name}</div>
         <div>$ {props.price}</div>
       </div>
-      <Button className={classes.btn} onClick={props.click}>
+      <Button className={classes.btn} onClick={props.clickHandler}>
         Add to cart
       </Button>
     </div>

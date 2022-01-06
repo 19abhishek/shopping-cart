@@ -10,30 +10,29 @@ function App() {
   const [items, setItems] = useState([]);
 
   const clickHandler = (product) => {
-    let itemIndex = items.findIndex((id) => id === product.key);
+    console.log(product);
+
+    let itemIndex = items.findIndex((item) => item.id === product.id);
+    console.log(itemIndex);
     if (itemIndex === -1) {
-      const newItems = [
-        {
-          id: product.key,
-          name: product.name,
-          price: product.price,
-          qty: 1,
-        },
-      ];
-      setItems(newItems);
+      setItems([...items, { ...product, qty: 1 }]);
     } else {
-      let currProd = items[itemIndex];
-      currProd.qty++;
-      items.splice(itemIndex, 1, currProd);
-      setItems(items);
+      setItems(
+        items.map((item) =>
+          item.id === product.id
+            ? { ...product, qty: items[itemIndex].qty + 1 }
+            : item
+        )
+      );
     }
+    console.log(items);
   };
 
   return (
     <div>
       <Header count={count} />
       <div className={classes.list}>
-        <Shop item={items} click={clickHandler} />
+        <Shop item={items} clickHandler={clickHandler} />
         <Cart items={items} />
       </div>
     </div>
