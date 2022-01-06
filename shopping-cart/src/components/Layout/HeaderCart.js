@@ -4,7 +4,7 @@ const HeaderCart = (props) => {
   return (
     <div className={classes.headerCart}>
       <span>Cart</span>
-      <span className={classes.count}>{0}</span>
+      <span className={classes.count}>{props.count}</span>
     </div>
   );
 };

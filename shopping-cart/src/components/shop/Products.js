@@ -1,7 +1,5 @@
 import classes from "./Products.module.css";
 import Button from "../UI/Button";
-import shoes from "../images/shoes.jpeg";
-import { Fragment } from "react";
 
 const Products = (props) => {
   return (
@@ -13,7 +11,9 @@ const Products = (props) => {
         <div>{props.name}</div>
         <div>$ {props.price}</div>
       </div>
-      <Button className={classes.btn}>Add to cart</Button>
+      <Button className={classes.btn} onClick={props.click}>
+        Add to cart
+      </Button>
     </div>
   );
 };

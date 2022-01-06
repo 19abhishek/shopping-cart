@@ -11,7 +11,7 @@ const DUMMY_PRODUCTS = [
   { id: "p3", path: telephone, name: "Telephone", price: 199 },
 ];
 
-const Shop = () => {
+const Shop = (props) => {
   return (
     <Card>
       <h3>Products</h3>
@@ -23,6 +23,7 @@ const Shop = () => {
               img={prod.path}
               name={prod.name}
               price={prod.price}
+              click={props.clickHandler.bind(null, prod)}
             />
           );
         })}
