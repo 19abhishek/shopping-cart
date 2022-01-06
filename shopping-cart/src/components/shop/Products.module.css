@@ -5,3 +5,12 @@
 .products {
   display: flex;
 }
+
+.properties {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn {
+  margin-left: 5rem;
+}

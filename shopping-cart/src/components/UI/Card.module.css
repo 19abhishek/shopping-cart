@@ -2,6 +2,7 @@
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   border-radius: 14px;
+  margin: 2rem;
   background-color: #ccc;
   color: #555;
   overflow: scroll;

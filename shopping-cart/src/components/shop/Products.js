@@ -9,11 +9,11 @@ const Products = (props) => {
       <figure>
         <img className={classes.img} src={props.img} alt={props.name} />
       </figure>
-      <div>
+      <div className={classes.properties}>
         <div>{props.name}</div>
         <div>$ {props.price}</div>
       </div>
-      <Button>Add to cart</Button>
+      <Button className={classes.btn}>Add to cart</Button>
     </div>
   );
 };
