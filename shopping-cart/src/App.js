@@ -10,10 +10,7 @@ function App() {
   const [items, setItems] = useState([]);
 
   const clickHandler = (product) => {
-    console.log(product);
-
     let itemIndex = items.findIndex((item) => item.id === product.id);
-    console.log(itemIndex);
     if (itemIndex === -1) {
       setItems([...items, { ...product, qty: 1 }]);
     } else {
@@ -25,15 +22,30 @@ function App() {
         )
       );
     }
-    console.log(items);
+    setCount(items.reduce((x, y) => x + y.qty, 1));
+  };
+
+  const removeHandler = (product) => {
+    const item = items.find((item) => item.id === product.id);
+    if (item.qty === 1) {
+      setItems(items.filter((cItem) => cItem.id !== item.id));
+    } else {
+      setItems(
+        items.filter((cItem) => (cItem.id === item.id ? cItem.qty-- : cItem))
+      );
+    }
   };
 
   return (
     <div>
       <Header count={count} />
-      <div className={classes.list}>
+      <div>
+        <Cart
+          items={items}
+          clickHandler={clickHandler}
+          removeHandler={removeHandler}
+        />
         <Shop item={items} clickHandler={clickHandler} />
-        <Cart items={items} />
       </div>
     </div>
   );

@@ -3,11 +3,15 @@ import Button from "../UI/Button";
 
 const CartItems = (props) => {
   const items = props.items;
+  const { clickHandler, removeHandler } = props;
+  const totalPrice = items.reduce((x, y) => x + y.qty * y.price, 0);
 
   const productsList = items.map((item) => {
     return (
       <div className={classes.products} key={item.id}>
         <div>{item.name}</div>
+        <Button onClick={() => clickHandler(item)}>+</Button>
+        <Button onClick={() => removeHandler(item)}>-</Button>
         <div>
           {item.qty} * ${item.price}
         </div>
@@ -23,7 +27,7 @@ const CartItems = (props) => {
       {productsList}
       <div className={classes.totalPrice}>
         <div>Total Price:</div>
-        <div>$3200</div>
+        <div>${totalPrice}</div>
       </div>
       <Button>Checkout</Button>
     </div>

@@ -7,7 +7,11 @@ const Cart = (props) => {
     <Card>
       <div className={classes.flex}>
         <h3>Cart Items</h3>
-        <CartItems items={props.items} />
+        <CartItems
+          items={props.items}
+          clickHandler={props.clickHandler}
+          removeHandler={props.removeHandler}
+        />
       </div>
     </Card>
   );
