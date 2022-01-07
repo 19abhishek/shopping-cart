@@ -4,6 +4,8 @@ import Card from "../UI/Card";
 import shoes from "../images/shoes.jpeg";
 import camera from "../images/camera.jpeg";
 import telephone from "../images/telephone.jpeg";
+import CartContext from "../../store/cart-context";
+import { useContext } from "react";
 
 const DUMMY_PRODUCTS = [
   { id: "p1", path: camera, name: "Camera", price: 699 },
@@ -13,6 +15,9 @@ const DUMMY_PRODUCTS = [
 
 const Shop = (props) => {
   const { clickHandler } = props;
+  const cartCtx = useContext(CartContext);
+  const { addItem } = cartCtx;
+
   return (
     <Card>
       <h3>Products</h3>
@@ -24,7 +29,7 @@ const Shop = (props) => {
               img={prod.path}
               name={prod.name}
               price={prod.price}
-              clickHandler={() => clickHandler(prod)}
+              clickHandler={() => addItem(prod)}
             />
           );
         })}

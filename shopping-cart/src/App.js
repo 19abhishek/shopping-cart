@@ -1,6 +1,7 @@
 import Header from "./components/Layout/Header";
 import Cart from "./components/shop/Cart";
 import Shop from "./components/shop/Shop";
+import CartProvider from "./store/CartProvider";
 
 import { useState } from "react";
 
@@ -36,7 +37,7 @@ function App() {
   };
 
   return (
-    <div>
+    <CartProvider>
       <Header count={count} />
       <div>
         <Cart
@@ -46,7 +47,7 @@ function App() {
         />
         <Shop item={items} clickHandler={clickHandler} />
       </div>
-    </div>
+    </CartProvider>
   );
 }
 

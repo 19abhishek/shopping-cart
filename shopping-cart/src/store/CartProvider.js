@@ -14,24 +14,41 @@ const cartReducer = (state, action) => {
     );
     let updatedItems;
     const currItem = state.items[itemIndex];
+
     if (currItem) {
       const updatedItem = {
         ...currItem,
-        qty: currItem.qty++,
+        qty: currItem.qty + 1,
       };
       updatedItems = [...state.items];
       updatedItems[itemIndex] = updatedItem;
     } else {
-      updatedItems = [{ ...state.items }, action.item];
+      updatedItems = [...state.items, { ...action.item, qty: 1 }];
     }
-    const updatedPrice = state.totalPrice + action.item.price * action.item.qty;
+    const updatedPrice = state.totalPrice + action.item.price;
     return {
       items: updatedItems,
       totalPrice: updatedPrice,
     };
   }
   if (action.type === "REMOVE") {
+    const itemIndex = state.items.findIndex((item) => item.id === action.id);
+    let updatedItems;
+    const currItem = state.items[itemIndex];
+    if (currItem.qty === 1) {
+      updatedItems = state.items.filter((item) => item.id !== action.id);
+    } else {
+      const updatedItem = { ...currItem, qty: currItem.qty - 1 };
+      updatedItems = [...state.items];
+      updatedItems[itemIndex] = updatedItem;
+    }
+    const updatedPrice = state.totalPrice - currItem.price;
+    return {
+      items: updatedItems,
+      totalPrice: updatedPrice,
+    };
   }
+
   return initialState;
 };
 
