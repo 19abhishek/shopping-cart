@@ -9,7 +9,7 @@ const HeaderCart = (props) => {
   return (
     <div className={classes.headerCart}>
       <span>Cart</span>
-      <span className={classes.count}>{props.count}</span>
+      <span className={classes.count}>{total}</span>
     </div>
   );
 };
